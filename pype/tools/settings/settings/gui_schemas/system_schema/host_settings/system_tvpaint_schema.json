@@ -1,11 +1,10 @@
 {
     "type": "dict",
-    "key": "photoshop",
-    "label": "Adobe Photoshop",
+    "key": "tvpaint",
+    "label": "TV Paint",
     "collapsable": true,
     "checkbox_key": "enabled",
-    "children": [
-        {
+    "children": [{
             "type": "boolean",
             "key": "enabled",
             "label": "Enabled"
@@ -14,22 +13,14 @@
             "key": "environment",
             "label": "Environment",
             "type": "raw-json",
-            "env_group_key": "photoshop"
+            "env_group_key": "tvpaint"
         },
         {
             "type": "schema_template",
             "name": "system_host_template",
             "template_data": {
-                "host_version": "2021",
-                "host_name": "photoshop"
-            }
-        },
-        {
-            "type": "schema_template",
-            "name": "system_host_template",
-            "template_data": {
-                "host_version": "2020",
-                "host_name": "photoshop"
+                "host_version": "11",
+                "host_name": "tvpaint"
             }
         }
     ]

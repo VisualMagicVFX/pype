@@ -66,6 +66,14 @@
         },
         {
             "type": "schema",
+            "name": "system_aftereffects_schema"
+        },
+        {
+            "type": "schema",
+            "name": "system_tvpaint_schema"
+        },
+        {
+            "type": "schema",
             "name": "system_celaction_schema"
         },
         {
