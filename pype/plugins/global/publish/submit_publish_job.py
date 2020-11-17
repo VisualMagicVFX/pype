@@ -232,6 +232,10 @@ class ProcessSubmittedJobOnFarm(pyblish.api.InstancePlugin):
                                               'render',
                                               override_version)
 
+        publish_job_priority = job["Props"]["Pri"]
+        if self.deadline_priority:
+            publish_job_priority = self.deadline_priority
+
         # Generate the payload for Deadline submission
         payload = {
             "JobInfo": {
@@ -243,7 +247,7 @@ class ProcessSubmittedJobOnFarm(pyblish.api.InstancePlugin):
 
                 "Department": self.deadline_department,
                 "ChunkSize": self.deadline_chunk_size,
-                "Priority": job["Props"]["Pri"],
+                "Priority": publish_job_priority,
 
                 "Group": self.deadline_group,
                 "Pool": self.deadline_pool,
@@ -904,10 +908,8 @@ class ProcessSubmittedJobOnFarm(pyblish.api.InstancePlugin):
                 "deadlineUser", getpass.getuser())
             # Priority is now not handled at all
 
-            if self.deadline_priority:
-                render_job["Props"]["Pri"] = self.deadline_priority
-            else:
-                render_job["Props"]["Pri"] = instance.data.get("priority")
+
+            render_job["Props"]["Pri"] = instance.data.get("priority")
 
             render_job["Props"]["Env"] = {
                 "FTRACK_API_USER": os.environ.get("FTRACK_API_USER"),
